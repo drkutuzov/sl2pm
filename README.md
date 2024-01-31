@@ -13,14 +13,13 @@ pip install -r requirements.txt
 ```
 
 ## Content
-Files in `/sl2pm` contain the code for SL2PM. 
-Directories in `/examples` contains tutorials on how to analyse data with SL2PM. 
-All directories contain Jupyter notebooks with tutorials for how to use sl2pm for a specific task and an example of experimental data (as a numpy array ".npy").
+`/sl2pm` contains the code for SL2PM.  
+`/examples` contains folders with specific examples of data analysis with SL2PM. Each folder contains Jupyter notebooks tutorials and an example of experimental data (as numpy arrays).
 
 `examples/quantum_dots`: Tracking single quantum dots (QDs) in brain parenchyma.  
 `examples/red_blood_cells`: Tracking single RBCs in a capillary.  
 `examples/capillaries`: Tracking diameter and center of a capillary.  
-`examples/bistable_bias`: Estimating parameters of bistable bias --- artefact present in some detectors (photomultiplier tubes, PMTs) used for 2PM.
+`examples/bistable_bias`: Estimating parameters of bistable bias – artefact present in some detectors (photomultiplier tubes, PMTs) used for 2PM.
 
 
 ## Usage
