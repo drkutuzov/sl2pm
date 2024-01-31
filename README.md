@@ -19,6 +19,7 @@ pip install -r requirements.txt
 `examples/quantum_dots`: Tracking single quantum dots (QDs) in brain parenchyma.  
 `examples/red_blood_cells`: Tracking single RBCs in a capillary.  
 `examples/capillaries`: Tracking diameter and center of a capillary.  
+`examples/pmt_calibration`: Calibrating photomultiplier tubes (PMTs) for SL2PM.
 `examples/bistable_bias`: Estimating parameters of bistable bias – artefact present in some detectors (photomultiplier tubes, PMTs) used for 2PM.
 
 ## Usage
