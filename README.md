@@ -1,5 +1,8 @@
 # SL2PM
-A package for tracking particles, red blood cells (RBCs), and blood vessel walls with super-localization from images recorded with two-photon microscopy (2PM). The package is based on the data analysis developed in the manuscript "Super-localization two-photon microscopy for _in vivo_ tracking of particles and surfaces".
+A package for tracking particles, red blood cells (RBCs), and blood vessel walls with super-localization from images recorded with two-photon microscopy (2PM). The package is based on the data analysis developed in the manuscript:  
+
+> Kutuzov N., Lauritzen M., and Flyvbjerg H. 
+> Super-localization two-photon microscopy for _in vivo_ tracking of particles and surfaces.
 
 ## Installation
 
