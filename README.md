@@ -29,12 +29,12 @@ pip install -r requirements.txt
 # Usage
 * Select a folder in `examples` based on the data analysis you need.  
 * Upload your data (e.g. as a numpy array) to the folder.  
-* Make a copy of the Jupyter notebook tutorial or make a new notebook.  
+* Make a copy of the Jupyter notebook tutorial or make a new one.  
 * Use the notebook to analyse your data using the tutorial as a guide.  
 
 > [!WARNING] 
 > Always check if your data satisfy assumptions of SL2PM analysis before applying it (see the manuscript text for more details).
 
 > [!NOTE]
-> * Tutorial Jyputer notebooks only demonstrate the key parts of the data analysis described in the manuscript "Super-localization two-photon microscopy for _in vivo_ tracking of particles and surfaces". Parts of the data analysis that can be done with the standard data analysis techniques, which have Python implementation (e.g. numpy, scipy, etc.), are not shown in the tutorials. They need to be implemented by the user based on the specific task at hand.
+> * Tutorial Jyputer notebooks only demonstrate the key parts of the data analysis described in the manuscript "Super-localization two-photon microscopy for _in vivo_ tracking of particles and surfaces". Parts of the data analysis that can be done with the standard data analysis techniques, which have Python implementation (e.g. numpy, scipy, etc.), are not shown in the tutorials. 
 > * The spatial coordinate in the Jupyter notebook examples is measured in pixels (not actual physical distance units). 
