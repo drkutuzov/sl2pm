@@ -31,6 +31,8 @@ pip install -r requirements.txt
 * Upload your data (e.g. as a numpy array) to the folder.  
 * Make a copy of the Jupyter notebook tutorial or make a new one.  
 * Use the notebook to analyse your data using the tutorial as a guide.  
+>[!Tip]
+> If you are interested in measuring diameter of a capillary, made visible with fluorescently-labeled plasma (e.g. with FITC-dextran), go to the `examples/capillaries/full_demo_plasma.ipynb` notebook, which shows an example of the entire data analysis pipeline. 
 
 > [!WARNING] 
 > Always check if your data satisfy assumptions of SL2PM analysis before applying it (see the manuscript text for more details).
