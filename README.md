@@ -32,7 +32,7 @@ pip install -r requirements.txt
 * Make a copy of the Jupyter notebook tutorial or make a new one.  
 * Use the notebook to analyse your data using the tutorial as a guide.  
 >[!Tip]
-> If you are interested in measuring diameter of a capillary, made visible with fluorescently-labeled plasma (e.g. with FITC-dextran), go to the `examples/capillaries/full_demo_plasma.ipynb` notebook, which shows an example of the entire data analysis pipeline. 
+> If you are interested in measuring diameter of a capillary, made visible with fluorescently-labeled plasma (e.g. with FITC-dextran), go to `examples/capillaries/full_demo_plasma.ipynb` notebook. 
 
 > [!NOTE]
 > * Tutorial Jyputer notebooks only demonstrate the key parts of the data analysis described in the manuscript "Super-localization two-photon microscopy for _in vivo_ tracking of particles and surfaces". Parts of the data analysis that can be done with the standard data analysis techniques, which have Python implementation (e.g. numpy, scipy, etc.), are not shown in the tutorials. 
