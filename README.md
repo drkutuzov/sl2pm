@@ -34,9 +34,9 @@ pip install -r requirements.txt
 >[!Tip]
 > If you are interested in measuring diameter of a capillary, made visible with fluorescently-labeled plasma (e.g. with FITC-dextran), go to the `examples/capillaries/full_demo_plasma.ipynb` notebook, which shows an example of the entire data analysis pipeline. 
 
-> [!WARNING] 
-> Always check if your data satisfy assumptions of SL2PM analysis before applying it (see the manuscript text for more details).
-
 > [!NOTE]
 > * Tutorial Jyputer notebooks only demonstrate the key parts of the data analysis described in the manuscript "Super-localization two-photon microscopy for _in vivo_ tracking of particles and surfaces". Parts of the data analysis that can be done with the standard data analysis techniques, which have Python implementation (e.g. numpy, scipy, etc.), are not shown in the tutorials. 
 > * The spatial coordinate in the Jupyter notebook examples is measured in pixels (not actual physical distance units). 
+
+> [!WARNING] 
+> Always check if your data satisfy assumptions of SL2PM analysis before applying it (see the manuscript text for more details).
