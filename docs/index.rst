@@ -32,13 +32,13 @@ To get started to SL2PM, explore the tutorials for different usecases
    
    tutorial/pmt_calibration/pmt_calibration_example
 
-   .. toctree::
+.. toctree::
    :maxdepth: 2
    :caption: Tracking a single quantum dot
    
    tutorial/quantum_dots/qd_example
 
-   .. toctree::
+.. toctree::
    :maxdepth: 2
    :caption: Tracking a single red blood cell
    
