@@ -7,8 +7,10 @@ class TestPMT(unittest.TestCase):
         self.assertEqual(gain(3), 1)
         self.assertEqual(gain(3.0), 1)
         self.assertEqual(gain(1.0), 3)
-        self.assertRaises(gain(0), ZeroDivisionError)
+        with self.assertRaises(ZeroDivisionError):
+            gain(0)
 
     def test_pmt_output(self):
-        self.assertEqual(pmt_output(4, 3), 12)
-        self.assertRaises(pmt_output(4, 0), ZeroDivisionError)
+        self.assertEqual(pmt_output(4, 3), 4.0)
+        with self.assertRaises(ZeroDivisionError):
+            pmt_output(4, 0)
