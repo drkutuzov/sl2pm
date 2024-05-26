@@ -5,6 +5,10 @@
 
 SL2PM
 ==================================
+A package for tracking particles, red blood cells (RBCs), and blood vessel walls with super-localization from images recorded with two-photon microscopy (2PM).
+The package is based on the data analysis developed in the manuscript:
+"Super-localization two-photon microscopy for in vivo tracking of nanoparticles, red blood cells, and capillary walls"
+The data analysis in SL2PM is data-driven, i.e., you need to check if underlying assumptions of SL2PM analysis are satisfied in your data before you apply any functions from SL2PM. This is why we suggest using SL2PM with Jupyter notebooks, where you can explore your data step-by-step (following our examples) and tailor SL2PM analysis to your data, if needed.
 
 To get started to SL2PM, explore the tutorials for different usecases
 
