@@ -1,10 +1,13 @@
 # SL2PM
 A package for tracking particles, red blood cells (RBCs), and capillary walls with super-localization from images recorded with two-photon microscopy (2PM). 
 
-To get started with SL2PM, explore tutorials for (1) tracking a single quantum dot, 
-(2) tracking a single red blood cell, and (3) tracking a single capillary. 
+To get started with SL2PM, explore tutorials for (1) tracking a quantum dot, 
+(2) tracking a red blood cell, and (3) tracking a capillary. 
+E.g. if you are interested in measuring diameter of a capillary, made visible with fluorescently-labeled plasma (e.g. with FITC-dextran), go to `tutorial/capillaries/track_capillary.ipynb` notebook.  
+
 All tracking algorithms require calibrations of the microscope's detectors (PMTs) and, for tracking capillaries, calibration of the microscope's PSF.
 Examples of these calibrations are shown in the separate tutorials: "Calibrating microscope's PSF for tracking vessels" and "Calibrating photomultiplier tubes (PMTs) for super-localization". 
+Note that the spatial coordinate in the Jupyter notebook examples is measured in pixels (not actual physical distance units).
 
 The data analysis in SL2PM is data-driven, i.e., you need to check if underlying assumptions of SL2PM analysis are satisfied 
 in your data before you apply any functions from SL2PM.
@@ -38,18 +41,8 @@ pip install -e .
 `docs/tutorial/pmt_calibration`: Calibrating photomultiplier tubes (PMTs) for SL2PM.  
 `docs/tutorial/bistable_bias`: Estimating parameters of bistable bias – artefact present in some detectors (photomultiplier tubes, PMTs) used for 2PM.
 
-
 ## Usage
 * Select a folder in `docs/tutorial` based on the data analysis you need.  
 * Upload your data (e.g. as a numpy array) to the folder.  
 * Make a copy of the Jupyter notebook tutorial or make a new one.  
 * Use the notebook to analyse your data using the tutorial as a guide.  
-
->[!Tip]
-> If you are interested in measuring diameter of a capillary, made visible with fluorescently-labeled plasma (e.g. with FITC-dextran), go to `examples/capillaries/full_demo_plasma.ipynb` notebook. 
-> * Tutorial Jyputer notebooks only demonstrate the key parts of the data analysis described in the manuscript "Super-localization two-photon microscopy for _in vivo_ tracking of particles and surfaces". Parts of the data analysis that can be done with the standard data analysis techniques, which have Python implementation (e.g. numpy, scipy, etc.), are not shown in the tutorials. 
-> * The spatial coordinate in the Jupyter notebook examples is measured in pixels (not actual physical distance units). 
-
-> [!WARNING] 
-> Always check if your data satisfy assumptions of SL2PM analysis before applying it (see the manuscript text for more details).
-
