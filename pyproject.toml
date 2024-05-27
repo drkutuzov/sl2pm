@@ -2,7 +2,7 @@
 authors = [
   {name = "Nikolay Kutuzov", email = "kutuzovnp@gmail.com"},
 ]
-description = "Two-photon microscopy particle tracking analysis"
+description = "Tracking of particles and surfaces with super-localization two-photon microscopy"
 name = "sl2pm"
 version = "1.0.0"
 readme = "README.md"
