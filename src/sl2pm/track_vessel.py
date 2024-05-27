@@ -1,8 +1,8 @@
 import numpy as np
-import pmt
+from . import pmt
 from scipy.optimize import minimize, curve_fit
 from scipy.ndimage import gaussian_filter1d
-from models import L_wall, L_plasma_no_glx, L_wall_plasma
+from .models import L_wall, L_plasma_no_glx, L_wall_plasma
 
 ### ----------------------------------------------- ###
 ### Ordinary least-squares fitting of line-profiles ###

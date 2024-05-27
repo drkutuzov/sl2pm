@@ -1,6 +1,6 @@
 import numpy as np
-import pmt
-from models import qd_blurred
+from . import pmt
+from .models import qd_blurred
 from scipy.optimize import minimize, curve_fit
 from scipy.ndimage import gaussian_filter
 

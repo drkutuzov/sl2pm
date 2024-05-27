@@ -1,9 +1,9 @@
 import numpy as np
-import pmt
+from . import pmt
 from scipy.special import erf
 from scipy.optimize import minimize, curve_fit
 from scipy.ndimage import gaussian_filter1d
-from models import rbc, rbc_inv
+from .models import rbc, rbc_inv
 
 
 def ols_fit(linescan, plasma_before_rbc=True, sigma_blur=1.5):

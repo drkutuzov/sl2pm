@@ -1,11 +1,11 @@
 import numpy as np
 from mpmath import fp
 from scipy.special import gamma
-from models import gaussian
+from .models import gaussian
 
 
 def gain(alpha):
-    """ 
+    """
     PMT gain, where alpha is the inverse scale parameter of the distribution describing single-photon output of a PMT.
     """
     return 3/alpha
