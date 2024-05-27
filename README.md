@@ -1,5 +1,10 @@
 # SL2PM
-A package for tracking particles, red blood cells (RBCs), and blood vessel walls with super-localization from images recorded with two-photon microscopy (2PM). 
+A package for tracking particles, red blood cells (RBCs), and capillary walls with super-localization from images recorded with two-photon microscopy (2PM). 
+
+To get started with SL2PM, explore tutorials for (1) tracking a single quantum dot, 
+(2) tracking a single red blood cell, and (3) tracking a single capillary. 
+All tracking algorithms require calibrations of the microscope's detectors (PMTs) and, for tracking capillaries, calibration of the microscope's PSF.
+Examples of these calibrations are shown in the separate tutorials: "Calibrating microscope's PSF for tracking vessels" and "Calibrating photomultiplier tubes (PMTs) for super-localization". 
 
 The data analysis in SL2PM is data-driven, i.e., you need to check if underlying assumptions of SL2PM analysis are satisfied 
 in your data before you apply any functions from SL2PM.
