@@ -1,18 +1,23 @@
 import numpy as np
-from . import pmt
-from .models import qd_blurred
+import pmt
+from models import qd_blurred
 from scipy.optimize import minimize, curve_fit
 from scipy.ndimage import gaussian_filter
 
 
 def make_xy_grid(image):
+    """ 
+    Make 2D grids of x- and y-coordinates. 
+    """
     ny, nx = image.shape
     X, Y = np.meshgrid(range(nx), range(ny), indexing='xy')
     return X, Y
 
 
 def ols_fit(image, sigma_blur=1):
-    """ QDs localization by fitting with ordinary least-squares optimization
+    """ 
+    Quick-and-dirty QDs localization by fitting 2D images with ordinary least-squares (OLS) optimization. 
+    Uses Gaussing blurring (STD=sigma_blur) of the image to reduce noise.
     """
     
     def qd_flat(xy, b, A, xo, yo, sx, sy, theta):
@@ -31,7 +36,9 @@ def ols_fit(image, sigma_blur=1):
 
 
 def p0_ols(image, alpha, sigma_blur=1):
-    """ Intitial guess for parameters using ordinary least squares fit 
+    """ 
+    Intitial guess for parameters using ordinary least squares fit. 
+    Uses Gaussing blurring (STD=sigma_blur) of the image to reduce noise. 
     """
     ny, nx = image.shape
     b, A, xo, yo, sx, sy, theta = ols_fit(image, sigma_blur=1)
@@ -44,7 +51,8 @@ def p0_ols(image, alpha, sigma_blur=1):
 
 
 def neg_loglike(p, image, alpha, sigma, mu, delta_s=4, s_max=1000):
-    """ Negative log-likelihood for fitting images of QDs
+    """ 
+    Negative log-likelihood for fitting images of QDs.
     """
     return np.sum(-np.log(pmt.q(image.ravel(), 
                                 qd_blurred(*make_xy_grid(image), *p).ravel(), 
@@ -57,7 +65,9 @@ def neg_loglike(p, image, alpha, sigma, mu, delta_s=4, s_max=1000):
     
 
 def mle_fit(image, alpha, sigma, mu, p0='ols', sigma_blur=1, delta_s=5, s_max=800, minimize_options=None):
-    """ Fit image with MLE
+    """ 
+    Fit image with MLE.
+    By default, uses initial parameters values estimated with the OLS fitting.
     """
     return minimize(neg_loglike, 
                        p0_ols(image, alpha, sigma_blur=sigma_blur) if p0 == 'ols' else p0,

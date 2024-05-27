@@ -7,7 +7,9 @@ from scipy.special import erf, erfcx
 ###-------------------------------------------------------------------
 ###------------------------Quantum dots-------------------------------
 def qd_blurred(x, y, b, A, xo, yo, sx, sy, theta):
-    """ 2D rotationally-asymmetric Gaussian
+    """ 
+    2D rotationally-asymmetric Gaussian.
+    This function is fitted to images of nanoparticles with MLE to estimate the nanoparticle's positions. 
     """
     b, A, sx, sy = np.abs(b), np.abs(A), np.abs(sx), np.abs(sy)
     
@@ -28,29 +30,37 @@ def qd_blurred(x, y, b, A, xo, yo, sx, sy, theta):
 ###-------------------------------------------------------------------
 ###---------------------------RBCs------------------------------------
 def rbc(x, b, A, s, xo):
-    """ Line fluorescence intensity distribution along a RBC/plasma interface
+    """ 
+    Line fluorescence intensity distribution along a RBC/plasma interface.
     """
     return b + 0.5*A*(1 + erf((x - xo)/(np.sqrt(2)*s)))
 
 def rbc_inv(x, b, A, s, xo):
-    """ Line fluorescence intensity distribution along a plasma/RBC interface
+    """ 
+    Line fluorescence intensity distribution along a plasma/RBC interface.
     """
     return b + 0.5*A*(1 - erf((x - xo)/(np.sqrt(2)*s)))
 
 ###-------------------------------------------------------------------
 ###-----------------------Blood vessels-------------------------------
 def gaussian(x, sigma):
-
+    """
+    Gaussian distribution with zero expected value and STD=sigma.
+    """
     return np.exp(-x**2/(2*sigma**2))/np.sqrt(2*np.pi*sigma**2)
 
 
 def laplace(x, l):
-
+    """
+    Laplace distribution.
+    """
     return np.exp(-np.abs(x)/l)/(2*l)
 
 
 def f_wall(x_psf, s_xy, l, R_wall, a1, n_phi=256):
-    
+    """
+    Part of the expression for L_wall and L_wall_plasma.
+    """
     phi = np.linspace(-np.pi, np.pi, n_phi)
     X_PSF, PHI = np.meshgrid(x_psf, phi)
     
@@ -61,7 +71,9 @@ def f_wall(x_psf, s_xy, l, R_wall, a1, n_phi=256):
 
 
 def F_lumen(x_psf, s_xy, l, R_lum, n_r=256):
-    
+    """
+    Part of the expression for L_plasma_no_glx.
+    """
     r = np.linspace(-R_lum, R_lum, n_r)
     X_PSF, R = np.meshgrid(x_psf, r)
 
@@ -71,7 +83,9 @@ def F_lumen(x_psf, s_xy, l, R_lum, n_r=256):
 
 
 def F_gcx(x_psf, s_xy, l, R_lum, R_wall, s_gcx, n_phi=256):
-    
+    """
+    Part of the expression for F_plasma.
+    """
     phi = np.linspace(0, np.pi, n_phi)
     X, PHI = np.meshgrid(x_psf, phi)
     
@@ -85,30 +99,40 @@ def F_gcx(x_psf, s_xy, l, R_lum, R_wall, s_gcx, n_phi=256):
 
 
 def F_plasma(x_psf, s_xy, l, R_lum, R_wall, s_gcx, n_phi=256, n_r=256):
-
+    """
+    Part of the expression for L_plasma and L_wall_plasma.
+    """
     return F_lumen(x_psf, s_xy, l, R_lum, n_r=n_r) + F_gcx(x_psf, s_xy, l, R_lum, R_wall, s_gcx, n_phi=n_phi)
 
 
 def L_plasma(x, xc, s_xy, l, R_lum, R_wall, s_gcx, I, b, n_phi=256, n_r=256):
-    """ Full expression (with glycocalyx) for plasma line-scans of fluorescence
+    """ 
+    Full expression (with glycocalyx) for plasma line-scans of fluorescence.
+    This function is fitted to line-profiles of plasma-fluorescence with MLE to track capillary walls (Protocol A).
     """
     return (I - b)*F_plasma(x - xc, s_xy, l, R_lum, R_wall, s_gcx, n_phi=n_phi, n_r=n_r) + b
 
 
 def L_plasma_no_glx(x, xc, s_xy, l, R_lum, I, b, n_r=256):
-    """ Simplified (no glycocalyx) expression for plasma line-scans of fluorescence
+    """ 
+    Simplified (no glycocalyx) expression for plasma line-scans of fluorescence.
+    This function is fitted to line-profiles of plasma-fluorescence with MLE to track capillary walls (Protocol B).
     """
     return (I - b)*F_lumen(x - xc, s_xy, l, R_lum, n_r=n_r) + b
 
 
 def L_wall(x, xc, s_xy, l, R_wall, a1, I, b_plasma, b_tissue, n_r=256, n_phi=256):
-    """ Expression for plasma wall-scans of fluorescence
+    """ 
+    Expression for plasma wall-scans of fluorescence.
+    This function is fitted to line-profiles of wall-fluorescence with MLE to track capillary walls (Protocol C).
     """
     return I*f_wall(x - xc, s_xy, l, R_wall, a1, n_phi=n_phi) + (b_plasma - b_tissue)*F_lumen(x - xc, s_xy, l, R_wall, n_r=n_r) + b_tissue
 
 
 def L_wall_plasma(x, xc, s_xy, l, R_lum, R_wall, s_gcx, a1, Iw, Ip, b_plasma, b_tissue_wall, b_tissue_plasma, n_r=256, n_phi=256):
-    """ Expressions for wall and plasma wall-scans of fluorescence
+    """ 
+    Expressions for wall and plasma wall-scans of fluorescence.
+    This function is fitted to line-profiles of wall- and plasma-fluorescence with MLE to track capillary walls (Protocol A).
     """
     return np.array([L_wall(x, xc, s_xy, l, R_wall, a1, Iw, b_plasma, b_tissue_wall, n_r=n_r, n_phi=n_phi),
                      L_plasma(x, xc, s_xy, l, R_lum, R_wall, s_gcx, Ip, b_tissue_plasma, n_r=n_r, n_phi=n_phi)]) 
@@ -117,7 +141,8 @@ def L_wall_plasma(x, xc, s_xy, l, R_lum, R_wall, s_gcx, a1, Iw, Ip, b_plasma, b_
 #-------------------Ultimate Fit--------------------
 
 def L_multi(x, s_xy, l, dR, s_gcx, b_plasma, b_tissue_wall, b_tissue_plasma, *pars, n_r=128, n_phi=128):
-    """ Expressions for consecutive pairs (in time) of wall and plasma line-scans of fluorescence
+    """ Expressions for consecutive pairs (in time) of wall and plasma line-scans of fluorescence.
+    Used in Protocol A for tracking capillary walls.
     """
     Iw, Ip, R_wall, xc, a1 = np.reshape(np.asarray(pars), [5, len(pars)//5])    
     return np.array([[L_wall(x, xc_i, s_xy, l, R_wall_i, a1_i, Iw_i, b_plasma, b_tissue_wall, n_r=n_r, n_phi=n_phi),
@@ -126,7 +151,8 @@ def L_multi(x, s_xy, l, dR, s_gcx, b_plasma, b_tissue_wall, b_tissue_plasma, *pa
 
 
 def L_multi_wall(x, s_xy, l, b_plasma, b_tissue_wall, *pars, n_r=128, n_phi=128):
-    """ Expressions for consecutive (in time) wall-scans of fluorescence
+    """ Expressions for consecutive (in time) wall-scans of fluorescence.
+    Used in Protocol C for tracking capillary walls.
     """
     Iw, R_wall, xc, a1 = np.reshape(np.asarray(pars), [4, len(pars)//4])    
     return np.array([L_wall(x, xc_i, s_xy, l, R_wall_i, a1_i, Iw_i, b_plasma, b_tissue_wall, n_r=n_r, n_phi=n_phi)
@@ -134,7 +160,8 @@ def L_multi_wall(x, s_xy, l, b_plasma, b_tissue_wall, *pars, n_r=128, n_phi=128)
 
 
 def L_multi_plasma(x, s_xy, l, b_tissue_plasma, *pars, n_r=128):
-    """ Expressions for consecutive (in time) plasma-scans of fluorescence
+    """ Expressions for consecutive (in time) plasma-scans of fluorescence.
+    Used in Protocol B for tracking capillary walls.
     """
     Ip, R_plasma, xc = np.reshape(np.asarray(pars), [3, len(pars)//3])    
     return np.array([L_plasma_no_glx(x, xc_i, s_xy, l, R_plasma_i, Ip_i, b_tissue_plasma, n_r=n_r)

@@ -1,14 +1,17 @@
 import numpy as np
-from . import pmt
+import pmt
 from scipy.optimize import minimize, curve_fit
 from scipy.ndimage import gaussian_filter1d
-from .models import L_wall, L_plasma_no_glx, L_wall_plasma
+from models import L_wall, L_plasma_no_glx, L_wall_plasma
 
 ### ----------------------------------------------- ###
 ### Ordinary least-squares fitting of line-profiles ###
 
 def ols_plasma(profile_plasma, sigma_blur=1.5, thr=0.1):
-
+    """
+    Quick-and-dirty vessel wall localization by fitting line-profiles of fluorescence with ordinary least-squares (OLS) optimization. 
+    Uses Gaussing blurring (STD=sigma_blur) of the image to reduce noise and thresholding (thr) to find the edges of the vessel.
+    """
     x = np.arange(len(profile_plasma))
     
     plasma = gaussian_filter1d(profile_plasma, sigma_blur)
@@ -25,7 +28,9 @@ def ols_plasma(profile_plasma, sigma_blur=1.5, thr=0.1):
 
 
 def ols_wall(profile_wall, sigma_blur=1.5):
-
+    """
+    Quick-and-dirty vessel wall localization by fitting line-profiles of fluorescence with ordinary least-squares (OLS) optimization. 
+    """
     x = np.arange(len(profile_wall))
     
     wall = gaussian_filter1d(profile_wall, sigma_blur)
@@ -43,7 +48,10 @@ def ols_wall(profile_wall, sigma_blur=1.5):
 
 
 def ols_wall_plasma(profile_wall, profile_plasma, sigma_blur=1.5):
-
+    """
+    Quick-and-dirty vessel wall localization by fitting line-profiles of fluorescence with ordinary least-squares (OLS) optimization. 
+    Uses Gaussing blurring (STD=sigma_blur) of the image to reduce noise and thresholding (thr) to find the edges of the vessel.
+    """
     x = np.arange(len(profile_wall))
     
     wall = gaussian_filter1d(profile_wall, sigma_blur)
@@ -64,7 +72,9 @@ def ols_wall_plasma(profile_wall, profile_plasma, sigma_blur=1.5):
 ### MLE fitting of line-profiles ###
 
 def mle(x, y, func, p0, n_aver, alpha, sigma, minimize_options=None):
-
+    """ 
+    Fit a line-profile with MLE.
+    """
     def neg_loglike(p):
 
         return pmt.nll_q_mean(y, func(x, *p), alpha, sigma, n_aver) 
