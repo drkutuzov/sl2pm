@@ -15,17 +15,19 @@ The documentation can be found at [https://sl2pm.readthedocs.io/en/latest/index.
 
 ## Installation
 
-Install from the PyPi distribution
+For the users: install from the PyPi distribution
 
 ```
 pip install sl2pm
 ```
 
-Or from the source
+For the developers: install from the source (optionally, from the new Conda environment):
 
 ```
 git clone git@github.com:drkutuzov/sl2pm.git
 cd sl2pm
+conda create -n sl2pm python==3.10
+conda activate sl2pm
 pip install -e .
 ```
 
