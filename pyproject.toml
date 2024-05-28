@@ -4,7 +4,7 @@ authors = [
 ]
 description = "Tracking of nanoparticles, red blood cells, and microvessel walls with super-localization two-photon microscopy (SL2PM)"
 name = "sl2pm"
-version = "1.0.0"
+version = "1.0.1"
 readme = "README.md"
 requires-python = ">=3.9"
 # These are keywords
