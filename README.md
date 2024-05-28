@@ -8,7 +8,7 @@ For example, if you are interested in measuring diameter of a capillary, made vi
 All tracking algorithms require calibration of the microscope's photomultiplier tubes (`tutorial/pmt_calibration/PMT_calibration.ipynb`) and, for tracking capillaries, calibration of the microscope's point-spread function (`tutorial/capillaries/PSF_calibration.ipynb`).
 
 The data analysis in SL2PM is data-driven, i.e., you need to check if underlying assumptions of SL2PM analysis are satisfied 
-in your data before you apply any functions from SL2PM.
+in your data before you apply any function from SL2PM.
 This is why we suggest using SL2PM with Jupyter notebooks, where you can explore your data step-by-step (following our examples) and tailor SL2PM analysis to your data, if needed. 
 
 The documentation can be found at [https://sl2pm.readthedocs.io/en/latest/index.html](https://sl2pm.readthedocs.io/en/latest/index.html)
