@@ -45,17 +45,17 @@ This is why we suggest using SL2PM with Jupyter notebooks, where you can explore
    :maxdepth: 2
    :caption: Calibrating point-spread function (PSF)
    
-   tutorial/capillaries/calibration_example
+   tutorial/capillaries/PSF_calibration
 
 .. toctree::
    :maxdepth: 2
    :caption: Calibrating photomultiplier tubes (PMTs)
    
-   tutorial/pmt_calibration/pmt_calibration_example
+   tutorial/pmt_calibration/PMT_calibration
 
 .. toctree::
    :maxdepth: 2
-   :caption: Removing artefact (bistable bias) from photomultiplier tubes (PMT) output
+   :caption: Removing artefact from output of photomultiplier tubes
    
    tutorial/bistable_bias/bistable_bias_example
 
