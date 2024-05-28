@@ -1,13 +1,11 @@
 # SL2PM
-A package for tracking particles, red blood cells (RBCs), and capillary walls with super-localization from images recorded with two-photon microscopy (2PM). 
+A package for tracking particles, red blood cells (RBCs), and microvessel walls with super-localization from images recorded with two-photon microscopy (2PM). 
 
-To get started with SL2PM, explore tutorials for (1) tracking a quantum dot, 
-(2) tracking a red blood cell, and (3) tracking a capillary. 
-E.g. if you are interested in measuring diameter of a capillary, made visible with fluorescently-labeled plasma (e.g. with FITC-dextran), go to `tutorial/capillaries/track_capillary.ipynb` notebook.  
+To get started with SL2PM, explore tutorials for tracking quantum dots, 
+red blood cells, and capillaries. 
+For example, if you are interested in measuring diameter of a capillary, made visible with fluorescently-labeled plasma (e.g. with FITC-dextran), see `tutorial/capillaries/track_capillary.ipynb` notebook.  
 
-All tracking algorithms require calibrations of the microscope's detectors (PMTs) and, for tracking capillaries, calibration of the microscope's PSF.
-Examples of these calibrations are shown in the separate tutorials: "Calibrating microscope's PSF for tracking vessels" and "Calibrating photomultiplier tubes (PMTs) for super-localization". 
-Note that the spatial coordinate in the Jupyter notebook examples is measured in pixels (not actual physical distance units).
+All tracking algorithms require calibration of the microscope's photomultiplier tubes (`tutorial/pmt_calibration/PMT_calibration.ipynb`) and, for tracking capillaries, calibration of the microscope's point-spread function (`tutorial/capillaries/PSF_calibration.ipynb`).
 
 The data analysis in SL2PM is data-driven, i.e., you need to check if underlying assumptions of SL2PM analysis are satisfied 
 in your data before you apply any functions from SL2PM.
@@ -33,13 +31,13 @@ pip install -e .
 
 ## Content
 `src/sl2pm` contains the code for SL2PM.  
-`docs/tutorial` contains folders with specific examples of data analysis with SL2PM. Each folder contains Jupyter notebooks tutorials and examples of experimental data (as numpy arrays).
+`docs/tutorial` contains folders with examples of data analysis with SL2PM. Each folder contains Jupyter notebooks tutorials and examples of experimental data (as numpy arrays).
 
-`docs/tutorial/quantum_dots`: Tracking single quantum dots (QDs) in brain parenchyma.  
-`docs/tutorial/red_blood_cells`: Tracking single RBCs in a capillary.  
-`docs/tutorial/capillaries`: Tracking diameter and center of a capillary.  
+`docs/tutorial/quantum_dots`: Tracking single quantum dots (QDs) in the brain parenchyma.  
+`docs/tutorial/red_blood_cells`: Tracking single RBCs in a brain capillary.  
+`docs/tutorial/capillaries`: Tracking diameter and center of a brain capillary and calibration of the microscope's PSF.  
 `docs/tutorial/pmt_calibration`: Calibrating photomultiplier tubes (PMTs) for SL2PM.  
-`docs/tutorial/bistable_bias`: Estimating parameters of bistable bias – artefact present in some detectors (photomultiplier tubes, PMTs) used for 2PM.
+`docs/tutorial/bistable_bias`: Estimating parameters of bistable bias – artefact sometimes present in the output of PMTs.
 
 ## Usage
 * Select a folder in `docs/tutorial` based on the data analysis you need.  
